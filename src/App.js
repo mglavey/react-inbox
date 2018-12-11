@@ -1,10 +1,26 @@
+
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Message from './components/Message'
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import axios from 'axios';
+import Message from './components/Message';
 import Homepage from './components/Homepage';
 
-
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        messages: []
+        
+    };
+}
+
+async componentDidMount() {
+    const messages = (await axios.get('https://morning-falls-3769.herokuapp.com/api/messages')).data;
+    this.setState({
+        messages,
+    });
+}
+
   render() {
     return (
       <div>

@@ -11,8 +11,7 @@ class Message extends Component {
     }
    
     async componentDidMount() {
-        const { match: { params } } = this.props;
-        const message = (await axios.get(`https://morning-falls-3769.herokuapp.com/api/messages/${params.messageId}`)).data
+        const message = (await axios.get(`https://morning-falls-3769.herokuapp.com/api/messages`)).data
         this.setState({
             message,
         });
