@@ -6,7 +6,7 @@ class Sidebar extends Component{
         return(
             <div>
                 <p>Sidebar</p>
-                < Searchbar />
+                < Searchbar searchbarOnChange={this.props.searchbarOnChange}/>
             </div>
         );
     }

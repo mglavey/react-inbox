@@ -9,8 +9,8 @@ class HomePage extends Component{
         return(
             <Grid
                 width={320}>
-                <Sidebar />
-                <MessageList />
+                <Sidebar searchbarOnChange={this.props.searchbarOnChange} />
+                <MessageList messages={this.props.messages} />
             </Grid>
         );
     }

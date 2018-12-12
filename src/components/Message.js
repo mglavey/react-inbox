@@ -1,26 +1,12 @@
 import React, {Component} from 'react';
-import axios from 'axios';
+
 
 class Message extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            message: ''
-        }
-
-    }
    
-    async componentDidMount() {
-        const message = (await axios.get(`https://morning-falls-3769.herokuapp.com/api/messages`)).data
-        this.setState({
-            message,
-        });
-    }
-
     render() {
-        const {message} = this.state;
-        if (message === null ) {
-            console.log('hello')
+        const messageId = this.props.match.params.messageId
+        const message = this.props.messages.find((message)=> parseInt(messageId) === (message.id))
+        if (message === undefined ) {
             return (<div><p>Loading Message</p></div>)}
         else {
             return (
